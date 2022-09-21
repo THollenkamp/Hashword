@@ -1,14 +1,10 @@
 package me.tucker.hashword;
 
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
-import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Base64;
 
@@ -30,7 +26,7 @@ public class HashManager {
     }
 
     public static String getPassword(String md5, String salt) {
-        SecretKeyFactory factory = null;
+        SecretKeyFactory factory;
         try {
             factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
             KeySpec spec = new PBEKeySpec(md5.toCharArray(), salt.getBytes(), 65536, 256);

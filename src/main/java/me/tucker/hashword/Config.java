@@ -21,9 +21,6 @@ public class Config {
     public Config() {
         try {
             this.file = new File(Hashword.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath() + "/../../config.json");
-            System.out.println(file.exists());
-            System.out.println(file.getPath());
-            System.out.println(file.getAbsolutePath());
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
