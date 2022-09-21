@@ -1,0 +1,19 @@
+{
+  "NOTICE": [
+    "The algorithm for creating your passwords relies on this file.",
+    "Do not make changes to this file after you have started",
+    "making passwords or else your passwords will change!",
+    "",
+    "Your password becomes more difficult to crack with more of these settings enabled,",
+    "however, if you ever have to change any of the hardware associated with the setting,",
+    "then your passwords will change as well. By default, keyboard and mouse information",
+    "are disabled as they are the most replaced pieces of a desktop computer."
+  ],
+  "hardware-settings": {
+    "os-info": true,
+    "monitor": true,
+    "cpu": true,
+    "keyboard": false,
+    "mouse": false
+  }
+}
