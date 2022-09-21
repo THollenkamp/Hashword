@@ -42,4 +42,27 @@ public class HashManager {
         return "ERROR";
     }
 
+    public static String concat(String key, String domain, String user, String properties) {
+        StringBuilder builder = new StringBuilder();
+        builder.append(user, 0, user.length() > 4 ? 4 : user.length() - 1)
+                .append(properties, properties.length() < 2 ? 0 : 1, properties.length() < 12 ? properties.length() - 1 : 12)
+                .append(domain, 0, domain.length() > 2 ? 2 : domain.length() -1)
+                .append(properties, properties.length() > 14 ? 14 : 0, properties.length() > 28 ? 28 : properties.length() - 1)
+                .append(key.charAt(0))
+                .reverse()
+                .append(properties, properties.length() / 2, properties.length() - 1)
+                .reverse()
+                .append(key, key.length() > 5 ? 3 : 0, key.length() > 6 ? 6 : key.length() - 1)
+                .append(properties.substring(properties.length() > 5 ? properties.length() - 6 : 0))
+                .append(key.length())
+                .reverse()
+                .append(new StringBuilder(domain.substring(0, domain.length() / 2)).reverse().append(domain.substring(domain.length() / 2)))
+                .append(properties)
+                .append(user, user.length() > 5 ? user.length() - 6 : 0, user.length() - 3)
+                .reverse()
+                .append(properties)
+                .reverse();
+        return builder.toString();
+    }
+
 }
