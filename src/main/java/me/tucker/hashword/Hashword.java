@@ -35,6 +35,11 @@ public class Hashword {
     }
 
     private static void displayASCII() {
+        System.out.println("NOTICE: This project depends on your specific hardware settings,");
+        System.out.println("so making any hardware changes to your computer may change any passwords");
+        System.out.println("that have been generated. Please make sure to make backups of any passwords");
+        System.out.println("before making any hardware changes to your computer!");
+        System.out.println();
         System.out.println("+--------------------------------------------------------+");
         System.out.println("|      __  __           __                           __  |");
         System.out.println("|     / / / /___ ______/ /_ _      ______  _________/ /  |");
