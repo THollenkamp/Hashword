@@ -5,9 +5,11 @@ import java.util.Scanner;
 public class Hashword {
     private static Scanner keyboard;
     private static int code = 1;
+    private static Config config;
 
     public static void main(String[] args) {
         keyboard = new Scanner(System.in);
+        config = new Config();
         displayASCII();
         String properties = new HardwareManager().getPropertyHash();
         System.out.print("Enter your authentication key: ");
@@ -48,4 +50,15 @@ public class Hashword {
         System.out.println("+--------------------------------------------------------+");
     }
 
+    public static Config getConfig() {
+        return config;
+    }
+
+    public static int getCode() {
+        return code;
+    }
+
+    public static Scanner getKeyboard() {
+        return keyboard;
+    }
 }

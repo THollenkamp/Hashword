@@ -1,3 +1,3 @@
 @echo off
-java -jar target/Hashword.jar
+java -jar releases/Hashword-1.0.jar
 pause
