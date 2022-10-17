@@ -21,7 +21,17 @@ git clone https://github.com/THollenkamp/Hashword.git
 ```
 You can then edit the config.json to your liking, and disable/enable different hardware aspects that will be used to generate your password. Please note that if you change this config after you start generating passwords, you will not be able to generate the same password again unless you change the config back to the original state.
 
-## Usage
+## Building
+
+### Installing Maven
+Follow the instructions on https://maven.apache.org/install.html to install maven.
+Once maven is installed, in the project directory, run:
+```
+mvn clean install
+```
+The project is built! Follow the section below to run the program based on your operating system.
+
+## Running
 
 #### Windows:
 Open a file explorer, navigate to the project directory, and double click ```run.bat```, or
