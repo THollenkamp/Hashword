@@ -10,7 +10,7 @@ A user on a different computer will never be able to generate the same password 
 > Use https://github.com/git-guides/install-git to install git on your windows machine.
 ###### macOS
 > Download xcode developer tools by running ```git``` in console, and follow the onscreen prompts to install git.
-##### Linux
+###### Linux
 > Open a terminal, and run ```apt install git -y``` to install git.
 
 ### Program Installation
