@@ -20,8 +20,8 @@ public class Config {
 
     public Config() {
         try {
-            this.file = new File(Hashword.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath() + "/../../config.json");
-        } catch (URISyntaxException e) {
+            this.file = new File(System.getProperty("user.dir") + "/config.json");
+        } catch (Exception e) {
             e.printStackTrace();
         }
         reload();

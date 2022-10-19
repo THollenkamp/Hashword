@@ -8,7 +8,7 @@ public class Hashword {
     private static Scanner keyboard;
     private static int code = 1;
     private static Config config;
-    public static boolean debug = true;
+    public static boolean debug = false;
 
     public static void main(String[] args) {
         keyboard = new Scanner(System.in);
