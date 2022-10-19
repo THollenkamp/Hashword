@@ -10,9 +10,10 @@
     "are disabled as they are the most replaced pieces of a desktop computer."
   ],
   "hardware-settings": {
-    "os-info": true,
-    "monitor": true,
+    "os": true,
     "cpu": true,
+    "ram": true,
+    "monitor": true,
     "keyboard": false,
     "mouse": false
   }

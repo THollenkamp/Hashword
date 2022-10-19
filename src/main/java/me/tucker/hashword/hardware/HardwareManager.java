@@ -21,20 +21,20 @@ public class HardwareManager {
             instance = new MacInstance();
         else
             instance = new LinuxInstance();
-        GraphicsDevice monitor = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         StringBuilder str = new StringBuilder();
-        if ((boolean) Hashword.getConfig().getObject("hardware-settings").get("monitor"))
-            str.append(monitor.getIDstring()).append(monitor.getDisplayMode().getRefreshRate()).append(monitor.getDisplayMode().getHeight() * monitor.getDisplayMode().getWidth() + monitor.getDisplayMode().getBitDepth());
+        str.append(instance.getHardwareInfo());
+        if ((boolean)Hashword.getConfig().getObject("hardware-settings").get("os"))
+            str.append(instance.getOsInfo());
         if ((boolean)Hashword.getConfig().getObject("hardware-settings").get("cpu"))
-            str.append(System.getenv("PROCESSOR_IDENTIFIER")).append(" ").append(System.getenv("PROCESSOR_LEVEL"));
+            str.append(instance.getCpuInfo());
+        if ((boolean)Hashword.getConfig().getObject("hardware-settings").get("ram"))
+            str.append(instance.getRamInfo());
+        if ((boolean) Hashword.getConfig().getObject("hardware-settings").get("monitor"))
+            str.append(instance.getMonitorInfo());
         if ((boolean)Hashword.getConfig().getObject("hardware-settings").get("keyboard"))
             str.append("");
         if ((boolean)Hashword.getConfig().getObject("hardware-settings").get("mouse"))
             str.append(MouseInfo.getNumberOfButtons());
-        if ((boolean)Hashword.getConfig().getObject("hardware-settings").get("os-info")) {
-            str.append(instance.getHardwareInfo());
-            str.append(properties.getProperty("os.name")).append(properties.getProperty("os.arch")).append(System.getenv("COMPUTERNAME")).append(properties.getProperty("user.name"));
-        }
         if (Hashword.debug)
             return str.toString();
         return HashManager.getMD5(str.toString());
