@@ -1,11 +1,14 @@
 package me.tucker.hashword;
 
+import me.tucker.hashword.hardware.HardwareManager;
+
 import java.util.Scanner;
 
 public class Hashword {
     private static Scanner keyboard;
     private static int code = 1;
     private static Config config;
+    public static boolean debug = true;
 
     public static void main(String[] args) {
         keyboard = new Scanner(System.in);
@@ -14,7 +17,7 @@ public class Hashword {
         String properties = new HardwareManager().getPropertyHash();
         System.out.print("Enter your authentication key: ");
         String key = keyboard.next();
-        while (code != 0) {
+        while (code != 0 && !debug) {
             System.out.print("Enter domain for account: ");
             String domain = keyboard.next();
             System.out.print("Enter email/username for account: ");
@@ -30,6 +33,10 @@ public class Hashword {
             if (!keyboard.next().equalsIgnoreCase("y"))
                 code = 0;
             System.out.println();
+        }
+        if (debug) {
+            System.out.println("Properties hash: " + properties);
+            System.out.println("OS Info: " + System.getProperty("os.name") + " " + System.getProperty("os.arch"));
         }
 
     }
