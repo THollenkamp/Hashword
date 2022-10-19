@@ -1,6 +1,12 @@
 package me.tucker.hashword.hardware;
 
 public class WindowsInstance extends OSInstance {
+
+    @Override
+    public String getCmd() {
+        return "systeminfo";
+    }
+
     @Override
     public String getMonitorInfo() {
         return "null";
@@ -8,16 +14,21 @@ public class WindowsInstance extends OSInstance {
 
     @Override
     public String getCpuInfo() {
-        return "null";
+        return getDataPoint("BIOS Version:");
     }
 
     @Override
     public String getOsInfo() {
-        return "null";
+        return getDataPoint("OS Name:") + getDataPoint("OS Manufacturer:") + getDataPoint("OS Configuration:");
     }
 
     @Override
     public String getHardwareInfo() {
-        return "null";
+        return getDataPoint("Product ID:");
+    }
+
+    @Override
+    public String getRamInfo() {
+        return getDataPoint("Total Physical Memory:");
     }
 }
