@@ -1,5 +1,7 @@
 package me.tucker.hashword.hardware;
 
+import java.awt.*;
+
 public class WindowsInstance extends OSInstance {
 
     @Override
@@ -9,7 +11,8 @@ public class WindowsInstance extends OSInstance {
 
     @Override
     public String getMonitorInfo() {
-        return "null";
+        GraphicsDevice monitor = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        return monitor.getIDstring() + monitor.getDisplayMode().getRefreshRate() + monitor.getDisplayMode().getHeight() * monitor.getDisplayMode().getWidth() + monitor.getDisplayMode().getBitDepth();
     }
 
     @Override

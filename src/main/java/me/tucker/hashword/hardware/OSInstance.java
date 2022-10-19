@@ -20,7 +20,7 @@ public abstract class OSInstance {
             String output;
             while ((output = stdInput.readLine()) != null) {
                 if (output.contains(key))
-                    str.append(output);
+                    str.append(output.replaceAll("\\s+", "-"));
             }
         } catch (IOException e) {
             e.printStackTrace();
