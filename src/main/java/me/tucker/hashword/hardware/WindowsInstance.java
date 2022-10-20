@@ -4,9 +4,8 @@ import java.awt.*;
 
 public class WindowsInstance extends OSInstance {
 
-    @Override
-    public String getCmd() {
-        return "systeminfo";
+    public WindowsInstance() {
+        super("systeminfo", OSType.WINDOWS);
     }
 
     @Override
@@ -18,6 +17,11 @@ public class WindowsInstance extends OSInstance {
     @Override
     public String getCpuInfo() {
         return getDataPoint("BIOS Version:");
+    }
+
+    @Override
+    public String getGpuInfo() {
+        return "null";
     }
 
     @Override

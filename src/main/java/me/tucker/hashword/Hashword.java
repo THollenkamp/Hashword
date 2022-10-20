@@ -1,6 +1,7 @@
 package me.tucker.hashword;
 
 import me.tucker.hashword.hardware.HardwareManager;
+import me.tucker.hashword.hardware.OSInstance;
 
 import java.util.Scanner;
 
@@ -8,13 +9,15 @@ public class Hashword {
     private static Scanner keyboard;
     private static int code = 1;
     private static Config config;
-    public static boolean debug = false;
+    public static boolean debug = true;
+    public static OSInstance instance;
 
     public static void main(String[] args) {
         keyboard = new Scanner(System.in);
         config = new Config();
+        instance = OSInstance.get();
         displayASCII();
-        String properties = new HardwareManager().getPropertyHash();
+        String properties = new HardwareManager().getPropertyHash(instance);
         System.out.print("Enter your authentication key: ");
         String key = keyboard.next();
         while (code != 0 && !debug) {
@@ -36,7 +39,7 @@ public class Hashword {
         }
         if (debug) {
             System.out.println("Properties hash: " + properties);
-            System.out.println("OS Info: " + System.getProperty("os.name") + " " + System.getProperty("os.arch"));
+            System.out.println("OS Type: " + instance.getType().toString());
         }
 
     }
@@ -67,5 +70,9 @@ public class Hashword {
 
     public static Scanner getKeyboard() {
         return keyboard;
+    }
+
+    public static OSInstance getInstance() {
+        return instance;
     }
 }

@@ -13,20 +13,15 @@ public class HardwareManager {
         this.properties = System.getProperties();
     }
 
-    public String getPropertyHash() {
-        OSInstance instance;
-        if (System.getProperty("os.name").toLowerCase().contains("windows"))
-            instance = new WindowsInstance();
-        else if (System.getProperty("os.name").toLowerCase().contains("mac"))
-            instance = new MacInstance();
-        else
-            instance = new LinuxInstance();
+    public String getPropertyHash(OSInstance instance) {
         StringBuilder str = new StringBuilder();
         str.append(instance.getHardwareInfo());
         if ((boolean)Hashword.getConfig().getObject("hardware-settings").get("os"))
             str.append(instance.getOsInfo());
         if ((boolean)Hashword.getConfig().getObject("hardware-settings").get("cpu"))
             str.append(instance.getCpuInfo());
+        if ((boolean)Hashword.getConfig().getObject("hardware-settings").get("gpu"))
+            str.append(instance.getGpuInfo());
         if ((boolean)Hashword.getConfig().getObject("hardware-settings").get("ram"))
             str.append(instance.getRamInfo());
         if ((boolean) Hashword.getConfig().getObject("hardware-settings").get("monitor"))
