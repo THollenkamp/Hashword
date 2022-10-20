@@ -35,7 +35,7 @@ The project is built! Follow the section below to run the program based on your 
 
 #### Windows:
 Open a file explorer, navigate to the project directory, and double click ```run.bat```, or
-In your current cmd window
+open a command prompt, navigate to the project directory, and type ```run.bat```
 
 #### macOS and Linux:
 Open a terminal instance, navigate to the project directory, and execute ```./run.sh```
