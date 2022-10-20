@@ -40,11 +40,11 @@ open a command prompt, navigate to the project directory, and type ```run.bat```
 #### macOS and Linux:
 Open a terminal instance, navigate to the project directory, and execute ```./run.sh```
 
-Then, enter your master password (this is not authenticated anywhere, but will determine how your password is generated), then your username/email, and the domain for the account, and your password will be generated.
+Then, enter your master password (this is not authenticated anywhere, but will determine what password is displayed), then your username/email, and the domain for the account, and your password will be displayed.
 
 ## NOTICE
 
 This project does not store any passwords, however, if any of your hardware information changes, or you edit the ```config.json``` file,
-you will no longer be able to replicate the original passwords without putting the settings back to how they were before you made any changes to the config/hardware. If you keep all of your hardware the same, and do not make any changes to the config, the program will consistently generate the same passwords, depending on what you input for the 3 values in the project. Please make backups of any passwords you generate if you plan on changing any hardware information, or any variables in the config.
+you will no longer be able to replicate the original passwords without putting the settings back to how they were before you made any changes to the config/hardware. If you keep all of your hardware the same, and do not make any changes to the config, the program will consistently display the same passwords, depending on what you input for the 3 values in the project. Please make backups of any passwords you generate if you plan on changing any hardware information, or any variables in the config.
 
-This is not necessarily the most secure method since the source code is public, however, it is a proof of concept that it would be possible to use hardware information to generate a password. In a real world scenario, this code would be highly obfuscated in order to hide the methods of hashing and concatenation to make the program even harder to crack.
+This is not necessarily the most secure method since the source code is public, however, it is a proof of concept that it would be possible to use hardware information to display a password. In a real world scenario, this code would be highly obfuscated in order to hide the methods of hashing and concatenation to make the program even harder to crack.
