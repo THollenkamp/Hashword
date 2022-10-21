@@ -38,7 +38,7 @@ Open a file explorer, navigate to the project directory, and double click ```run
 open a command prompt, navigate to the project directory, and type ```run.bat```
 
 #### macOS and Linux:
-Open a terminal instance, navigate to the project directory, and execute ```./run.sh```
+Open a terminal instance, navigate to the project directory, run ```chmod +x run.sh``` to set execute permissions, and then run ```./run.sh```
 
 Then, enter your master password (this is not authenticated anywhere, but will determine what password is displayed), then your username/email, and the domain for the account, and your password will be displayed.
 
