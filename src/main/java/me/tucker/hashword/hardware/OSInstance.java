@@ -81,4 +81,9 @@ public abstract class OSInstance {
             instance = new LinuxInstance();
         return instance;
     }
+
+    public enum OSType {
+        WINDOWS, MAC, LINUX;
+    }
+
 }
