@@ -101,7 +101,7 @@ public class Config {
         return -1;
     }
 
-    public double getInteger(String key) {
+    public int getInteger(String key) {
         try {
             return Integer.parseInt(getRawData(key));
         } catch (Exception ex) { }

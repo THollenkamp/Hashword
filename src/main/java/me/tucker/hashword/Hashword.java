@@ -27,7 +27,7 @@ public class Hashword {
             String user = keyboard.next();
             String concat = HashManager.concat(key, domain, user, properties);
             try {
-                String password = HashManager.getPassword(HashManager.getMD5(concat), properties);
+                String password = HashManager.getPassword(HashManager.getMD5(concat), properties, config.getInteger("password-length"));
                 System.out.println("Your password for " + domain + " is: " + password);
             } catch (Exception e) {
                 e.printStackTrace();

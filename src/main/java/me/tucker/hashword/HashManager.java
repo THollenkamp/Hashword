@@ -17,7 +17,7 @@ public class HashManager {
             md.update(str.getBytes(StandardCharsets.UTF_8));
             byte[] arr = md.digest();
             for (byte data : arr) {
-                fin.append(Integer.toHexString(0xff & data)).append(~(data & 0xff) ^ data);
+                fin.append(Integer.toHexString(0xff & data)).append(~(data << 3) ^ data);
             }
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
@@ -25,12 +25,12 @@ public class HashManager {
         return fin.toString();
     }
 
-    public static String getPassword(String md5, String salt) {
+    public static String getPassword(String md5, String salt, int length) {
         SecretKeyFactory factory;
         try {
             factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
             KeySpec spec = new PBEKeySpec(md5.toCharArray(), salt.getBytes(), 65536, 256);
-            return Base64.getEncoder().encodeToString(factory.generateSecret(spec).getEncoded()).substring(0, 17);
+            return Base64.getEncoder().encodeToString(factory.generateSecret(spec).getEncoded()).substring(0, length + 1);
 
         } catch (Exception e) {
             e.printStackTrace();

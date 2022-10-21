@@ -9,6 +9,7 @@
     "then your passwords will change as well. By default, keyboard and mouse information",
     "are disabled as they are the most replaced pieces of a desktop computer."
   ],
+  "password-length": 16,
   "hardware-settings": {
     "os": true,
     "cpu": true,
