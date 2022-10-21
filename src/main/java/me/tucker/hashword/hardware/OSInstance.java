@@ -14,17 +14,7 @@ public abstract class OSInstance {
     public OSInstance(String command, OSType type) {
         this.command = command;
         this.type = type;
-        this.commandOutput = new ArrayList<>();
-        try {
-            Process proc = Runtime.getRuntime().exec(this.command);
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-            String output;
-            while ((output = stdInput.readLine()) != null) {
-                commandOutput.add(output);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.commandOutput = executeCommand(this.command);
     }
 
     public abstract String getMonitorInfo();
@@ -56,30 +46,36 @@ public abstract class OSInstance {
     }
 
     public String getDataPointFromCommand(String command, String key) {
-        StringBuilder str = new StringBuilder();
+        for (String line : executeCommand(command)) {
+            if (line.contains(key))
+                return line.replaceAll("\\s+", "-");
+        }
+        return "null";
+    }
+
+    public List<String> executeCommand(String command) {
+        List<String> list = new ArrayList<>();
         try {
             Process proc = Runtime.getRuntime().exec(command);
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
             String output;
             while ((output = stdInput.readLine()) != null) {
-                if (output.contains(key))
-                    str.append(output.replaceAll("\\s+", "-"));
+                list.add(output);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return str.toString();
+        return list;
     }
 
+
     public static OSInstance get() {
-        OSInstance instance;
         if (System.getProperty("os.name").toLowerCase().contains("windows"))
-            instance = new WindowsInstance();
+            return new WindowsInstance();
         else if (System.getProperty("os.name").toLowerCase().contains("mac"))
-            instance = new MacInstance();
+            return new MacInstance();
         else
-            instance = new LinuxInstance();
-        return instance;
+            return new LinuxInstance();
     }
 
     public enum OSType {
