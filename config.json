@@ -10,6 +10,7 @@
     "are disabled as they are the most replaced pieces of a desktop computer."
   ],
   "password-length": 16,
+  "auto-copy-to-clipboard": true,
   "hardware-settings": {
     "os": true,
     "cpu": true,

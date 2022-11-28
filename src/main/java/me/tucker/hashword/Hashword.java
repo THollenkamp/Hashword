@@ -3,6 +3,9 @@ package me.tucker.hashword;
 import me.tucker.hashword.hardware.HardwareManager;
 import me.tucker.hashword.hardware.OSInstance;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.util.Scanner;
 
 public class Hashword {
@@ -29,6 +32,17 @@ public class Hashword {
             try {
                 String password = HashManager.getPassword(HashManager.getMD5(concat), properties, config.getInteger("password-length"));
                 System.out.println("Your password for " + domain + " is: " + password);
+                if (!config.getBoolean("auto-copy-to-clipboard")) {
+                    System.out.print("Would you like to copy your password to your clipboard? (y/n)");
+                    if (keyboard.next().equalsIgnoreCase("y")) {
+                        instance.copyToClipboard(password);
+                    }
+                    System.out.println();
+                }
+                else {
+                    instance.copyToClipboard(password);
+                    System.out.println("Your password has been copied to your clipboard.");
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

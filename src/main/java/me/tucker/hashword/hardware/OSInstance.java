@@ -1,5 +1,8 @@
 package me.tucker.hashword.hardware;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -80,6 +83,12 @@ public abstract class OSInstance {
 
     public enum OSType {
         WINDOWS, MAC, LINUX;
+    }
+
+    public void copyToClipboard(String str) {
+        StringSelection selection = new StringSelection(str);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(selection, selection);
     }
 
 }
