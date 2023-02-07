@@ -38,6 +38,7 @@ public class HashManager {
         return "ERROR";
     }
 
+
     public static String concat(String key, String domain, String user, String properties) {
         StringBuilder builder = new StringBuilder();
         builder.append(user, 0, user.length() > 4 ? 4 : user.length() - 1)

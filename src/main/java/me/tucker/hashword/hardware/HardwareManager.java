@@ -2,6 +2,8 @@ package me.tucker.hashword.hardware;
 
 import me.tucker.hashword.HashManager;
 import me.tucker.hashword.Hashword;
+import org.json.simple.JSONObject;
+
 import java.awt.*;
 import java.util.Properties;
 
@@ -16,19 +18,20 @@ public class HardwareManager {
     public String getPropertyHash(OSInstance instance) {
         StringBuilder str = new StringBuilder();
         str.append(instance.getHardwareInfo());
-        if ((boolean)Hashword.getConfig().getObject("hardware-settings").get("os"))
+        JSONObject hardwareSettings = Hashword.getConfig().getObject("hardware-settings");
+        if ((boolean)hardwareSettings.get("os"))
             str.append(instance.getOsInfo());
-        if ((boolean)Hashword.getConfig().getObject("hardware-settings").get("cpu"))
+        if ((boolean)hardwareSettings.get("cpu"))
             str.append(instance.getCpuInfo());
-        if ((boolean)Hashword.getConfig().getObject("hardware-settings").get("gpu"))
+        if ((boolean)hardwareSettings.get("gpu"))
             str.append(instance.getGpuInfo());
-        if ((boolean)Hashword.getConfig().getObject("hardware-settings").get("ram"))
+        if ((boolean)hardwareSettings.get("ram"))
             str.append(instance.getRamInfo());
-        if ((boolean) Hashword.getConfig().getObject("hardware-settings").get("monitor"))
+        if ((boolean)hardwareSettings.get("monitor"))
             str.append(instance.getMonitorInfo());
-        if ((boolean)Hashword.getConfig().getObject("hardware-settings").get("keyboard"))
+        if ((boolean)hardwareSettings.get("keyboard"))
             str.append("");
-        if ((boolean)Hashword.getConfig().getObject("hardware-settings").get("mouse"))
+        if ((boolean)hardwareSettings.get("mouse"))
             str.append(MouseInfo.getNumberOfButtons());
         if (Hashword.debug)
             return str.toString();
